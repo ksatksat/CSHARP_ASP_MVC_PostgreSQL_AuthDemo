@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auth Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Auth Demo</h1>
+    <p id="msg" class="msg" hidden></p>
+
+    <!-- Logged OUT -->
+    <section id="guest">
+      <div class="tabs">
+        <button id="tab-login" class="active" type="button">Login</button>
+        <button id="tab-register" type="button">Register</button>
+      </div>
+
+      <form id="login-form">
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="password" type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="register-form" hidden>
+        <input name="name" placeholder="Name" minlength="2" maxlength="50" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="password" type="password" placeholder="Password" required
+               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}"
+               title="8+ chars: a-z, A-Z, 0-9 and a special character like _ or -">
+        <small>8+ chars, with <b>a-z</b>, <b>A-Z</b>, <b>0-9</b> and a special char (<b>_ -</b> ...)</small>
+        <button type="submit">Create account</button>
+      </form>
+    </section>
+
+    <!-- Logged IN -->
+    <section id="user" hidden>
+      <p>Hello, <b id="u-name"></b>!</p>
+      <p>Email: <span id="u-email"></span></p>
+      <p>Role: <span id="u-role"></span></p>
+      <div class="row">
+        <button id="btn-admin" type="button">Try admin-only endpoint</button>
+        <button id="btn-logout" type="button">Logout</button>
+        <button id="btn-delete" type="button" class="danger">Delete account</button>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
